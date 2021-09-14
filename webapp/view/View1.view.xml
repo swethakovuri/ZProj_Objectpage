@@ -1,0 +1,52 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:m="sap.m" xmlns:core="sap.ui.core" 
+    xmlns="sap.uxap" xmlns:layout="sap.ui.layout"
+	controllerName="ObjectpageZProj_Objectpage.controller.View1" displayBlock="true">
+	<m:Shell id="shell">
+		<ObjectPageLayout upperCaseAnchorBar = "false" id="ObjectPageLayout" showHeaderContent="{= !!${/showContent} }">
+			<headerTitle>
+				<ObjectPageDynamicHeaderTitle>
+					<content>
+						<layout:HorizontalLayout class="sapUiResponsiveContentPadding">
+							<m:Select enabled="true" id="idDropdown" width="10rem" forceSelection="false" change="handleDocTypeChange" selectedKey="{doctype>/SelectedType}"
+								items="{ path: 'doctype>/DocumentType' }">
+								<core:Item key="{doctype>DocType}" text="{doctype>Name}"/>
+							</m:Select>
+							<m:Input id="documentInput" maxLength="12" width="8rem" submit="handleInputSubmit" placeholder="{EnterDocument}"></m:Input>
+							<m:Button id="idButton" text="Go" press="handleInputSubmit"/>
+						</layout:HorizontalLayout>
+					</content>
+				</ObjectPageDynamicHeaderTitle>
+			</headerTitle>
+			<headerContent>
+				<m:FlexBox wrap="Wrap" id="idHeader" fitContainer="true" visible="false">
+					<layout:VerticalLayout class="sapUiTinyMarginEnd">
+						<m:ObjectStatus id="idCategory" title="Category" text="{Header>Category}"/>
+						<m:ObjectStatus id="idSupplier" title="SupplierID" text="{Header>SupplierID}"/>
+						<m:ObjectStatus id="idName" title="Name" text="{Header>/Name}"/>
+						<m:ObjectStatus id="idDescription" title="Description" text="{Header>/Description}"/>
+					</layout:VerticalLayout>
+					
+				<!--	<layout:VerticalLayout id="idPoValue" visible="false">
+						<m:Label></m:Label>
+						<m:ObjectStatus title="{i18n>TotalPO}"/>
+						<m:ObjectNumber class="sapMObjectNumberLarge"
+							number="{Header>/TotalValue}"
+							unit="{Header>/Currency}" emphasized="false" state="None"/>
+					</layout:VerticalLayout>
+					
+					<layout:VerticalLayout id="idServiceValue" visible="false" class="sapUiTinyMarginEnd">
+						<m:Label></m:Label>
+						<m:ObjectStatus title="{i18n>PoValue}"/>
+						<m:ObjectNumber  class="sapMObjectNumberLarge"
+							number="{Header>/PurOrdVal}"
+							unit="{Header>/Currency}" emphasized="false" state="None"/>
+						<m:ObjectStatus title="{i18n>ReceiptValue}"/>
+						<m:ObjectNumber  class="sapMObjectNumberLarge"
+							number="{Header>/TotRecVal}"
+							unit="{Header>/Currency}" emphasized="false" state="None"/>
+					</layout:VerticalLayout>-->
+				</m:FlexBox>
+			</headerContent>
+		</ObjectPageLayout>
+	</m:Shell>
+</mvc:View>
